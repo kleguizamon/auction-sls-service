@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://" target="blank"><img src="https://www.albirasolutions.com/images/aws-serverless.png" width="320" alt="AWS Serverless Logo" /></a>
+  <a href="http://" target="blank"><img src="https://www.albirasolutions.com/images/aws-serverless.png" width="370" alt="AWS Serverless Logo" /></a>
 </p>
 
 ## AWS Serverless Service
