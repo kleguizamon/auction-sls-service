@@ -2,28 +2,34 @@ import { v4 as uuid } from 'uuid';
 import AWS from 'aws-sdk';
 import commonMiddleware from '../lib/commonMiddleware';
 import createError from 'http-errors';
+import createAuctionSchema from '../lib/schemas/createAuctionSchema';
+import validator from '@middy/validator';
 
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 const createAuction = async (event, context) => {
 	const { title } = event.body;
 	const now = new Date();
+	//set +1hs(finish auctions)
+	const endDate = new Date();
+	endDate.setHours(now.getHours() + 1);
 
 	const auction = {
 		id: uuid(),
 		title,
 		status: 'OPEN',
+		createdAt: now.toISOString(),
+		endingAt: endDate.toISOString(),
 		highsetBid: {
 			amount: 0,
 		},
-		createdAt: now.toISOString(),
 	};
 
 	try {
-		await dynamodb.put({
-			TableName: process.env.AUCTIONS_TABLE_NAME,
-			Item: auction,
-		}).promise();
+		await dynamodb
+			.put({TableName: process.env.AUCTIONS_TABLE_NAME,
+					Item: auction,
+			}).promise();
 	} catch (err) {
 		console.lo(err);
 		throw new createError.InternalServerError(err);
@@ -33,6 +39,7 @@ const createAuction = async (event, context) => {
 		statusCode: 201,
 		body: JSON.stringify(auction),
 	};
-}
+};
 
-export const handler = commonMiddleware(createAuction);
+export const handler = commonMiddleware(createAuction)
+	.use(validator( { inputSchema: createAuctionSchema}));
