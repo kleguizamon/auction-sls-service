@@ -1,5 +1,5 @@
 service:
-  name: auction-sls
+  name: auction-sls-service
 
 plugins:
   - serverless-bundle

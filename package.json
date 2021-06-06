@@ -1,5 +1,5 @@
 {
-  "name": "auction-sls",
+  "name": "auction-sls-service",
   "version": "1.0.0",
   "description": "Auction Service with Serverless Framework",
   "author": "Kevin Leguizamon",

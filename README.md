@@ -5,8 +5,8 @@
 ## AWS Serverless Service
 
 - Serverless Framework
-- API: getAuction, getAuctionById, createAuction, patchAmountAuction
+- API: getAuction, getAuctionById, createAuction, patchAmountAuction, processAuctions
 - AWS DynamoDB
 - AWS IAM
 - AWS Lambda
-- Middleware(Middy)
+- Middleware and validation schema(Middy)
