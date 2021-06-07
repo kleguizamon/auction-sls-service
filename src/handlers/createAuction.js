@@ -9,6 +9,8 @@ const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 const createAuction = async (event, context) => {
 	const { title } = event.body;
+	//get email seller(claim token)
+	const { email } = event.requestContext.authorizer;
 	const now = new Date();
 	//set +1hs(finish auctions)
 	const endDate = new Date();
@@ -20,9 +22,10 @@ const createAuction = async (event, context) => {
 		status: 'OPEN',
 		createdAt: now.toISOString(),
 		endingAt: endDate.toISOString(),
-		highsetBid: {
+		highestBid: {
 			amount: 0,
 		},
+		seller: email,
 	};
 
 	try {
