@@ -4,9 +4,18 @@
 
 ## AWS Serverless Service
 
-- Serverless Framework
-- API: getAuction, getAuctionById, createAuction, patchAmountAuction, processAuctions
-- AWS DynamoDB
-- AWS IAM
-- AWS Lambda
-- Middleware and validation schema(Middy)
+-  Serverless Framework
+-  AWS Lambda: getAuction, getAuctionById, createAuction, placeBid
+-  AWS DynamoDB
+-  AWS IAM
+-  AWS EventBridge
+-  AWS S3
+-  AWS SQS
+-  AWS SES
+-  Middleware and validation schema(Middy)
+
+## AWS Flowchart
+
+<p align="center">
+  <a href="http://" target="blank"><img src="https://i.postimg.cc/GmfXMDGm/auction-diagram.png" width="1000" alt="AWS Flowchart" /></a>
+</p>
